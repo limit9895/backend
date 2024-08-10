@@ -35,6 +35,8 @@ func main() {
 		value := counter
 		mu.Unlock()
 
+		log.Printf("Increment request received, new value: %d", value)
+
 		c.JSON(200, Response{Value: value})
 	})
 
@@ -43,6 +45,8 @@ func main() {
 		counter--
 		value := counter
 		mu.Unlock()
+
+		log.Printf("Decrement request received, new value: %d", value)
 
 		c.JSON(200, Response{Value: value})
 	})
